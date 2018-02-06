@@ -45,30 +45,76 @@ mkdir duplicate_images
 
 imagenes=$(find sipi_images -name *.tiff)
 
-for im1 in ${imagenes[*]}
-do 
+for im1 in ${imagenes[*]} 
+    do 
+        a=$(sha1sum $im1 | cut -f1 -d" ")
+        a1=$(sha1sum $im1 | cut -f3 -d" ")
 
-a=$(sha1sum $im1 | cut -f1 -d" ")
-a1=$(sha1sum $im1 | cut -f3 -d" ")
+        for im2 in ${imagenes[*]}
+    do
+    b=$(sha1sum $im2 | cut -f1 -d" ")
+    b1=$(sha1sum $im2 | cut -f3 -d" ")
 
-for im2 in ${imagenes[*]}
-do
-b=$(sha1sum $im2 | cut -f1 -d" ")
-b1=$(sha1sum $im2 | cut -f3 -d" ")
+    if [ "$a" == "$b" ] && [ "$a1" != "$b1" ] 
+    then
+        echo "find duplicate"
+        echo $im1
+        echo $im2
+        cp $im1 duplicate_images
+        cp $im2 duplicate_images
+    fi 
 
-
-if [ "$a" == "$b" ] && [ "$a1" != "$b1" ]
-
-then
-echo "find duplicate"
-echo $im1
-echo $im2
-cp $im1 duplicate_images
-cp $im2 duplicate_images
-
-fi 
-
-done 
+    done 
 done
 
 ```
+
+6. The Berkeley segmentation dataset was downloaded from the web page and decompressed using
+
+```
+tar -xvzf BSR_bsds500.tgz
+```
+
+7. Using `du -h`  command in the uncompress folder directory it was found that the disk size of the uncompress dataset is 74Mb. Also, using
+
+```
+find -type f -name *.png -o -name *.jpg -o -name *.bmp -o -name *.tiff  | wc -1 
+```
+
+It was found that there is a total of 500 images in the BSR/BSDS500/data/images directory.
+
+8. Using
+
+```
+identify $(find -type f -name *.png -o -name *.jpg -o -name *.bmp -o -name *.tiff) | cut -f3,1 -d" " |sort -k2 
+```
+
+It was found that the resolution of the images was 481x321 ( or 321x481) and their format is .jpg for all images. The identify command (of imageMagick package) is used over the output of the find command  that looks for files with .jpg, /png, .bmp or .tiff extension on their names, that corresponds to images. After that it passes this output of odentify to the cut command to obtain the first and third field (file location and  size respectively) to finally sort by size.
+
+9. Using
+
+```
+identify $(find -type f -name *.png -o -name *.jpg -o -name *.bmp -o -name *.tiff) | cut -f3,1 -d" " |sort -k2 | grep 481x321|wc -l
+```
+
+And
+
+```
+identify $(find -type f -name *.png -o -name *.jpg -o -name *.bmp -o -name *.tiff) | cut -f3,1 -d" " |sort -k2 | grep 321x481 |wc -l
+```
+
+It was found that there are 348 images in landscape orientation (width > height) and 152 images in portrait orientation for a total of 500 images contained in the folder. The command passes the previous information obtained in the previous question to the sort, grep and wc commands to sort by resolution, find the landscape images and count the number of images with that resolution.
+
+10. Using the crop command of imagemagick over the output of the find command the images were cropped to a size of 256x256 pixels [6]. The command used was
+
+```
+mogrify -crop 256x256+0+0 $(find -type f -name *.png -o -name *.jpg -o -name *.bmp -o -name *.tiff) 
+```
+
+## References
+*[1] "What is grep, and how do I use it?", Kb.iu.edu, 2018. [Online]. Available: https://kb.iu.edu/d/afiy. [Accessed: 04- Feb- 2018].*
+*[2] "What is the function of bash shebang?", stackExchange, 2017. .
+*[3] "How To View System Users in Linux on Ubuntu | DigitalOcean", Digitalocean.com, 2018. [Online]. Available: https://www.digitalocean.com/community/tutorials/how-to-view-system-users-in-linux-on-ubuntu. [Accessed: 04- Feb- 2018].*
+*[4] "IBM Knowledge Center", Ibm.com, 2018. [Online]. Available: https://www.ibm.com/support/knowledgecenter/en/ssw_aix_72/com.ibm.aix.security/passwords_etc_passwd_file.htm. [Accessed: 04- Feb- 2018].*
+*[5] "Ubuntu Manpage: wc - print newline, word, and byte counts for each file", Manpages.ubuntu.com, 2018. [Online]. Available: http://manpages.ubuntu.com/manpages/trusty/man1/wc.1.html. [Accessed: 05- Feb- 2018].*
+*[6] A. Thyssen, "Cutting and Bordering -- IM v6 Examples", Imagemagick.org, 2018. [Online]. Available: http://www.imagemagick.org/Usage/crop/#crop. [Accessed: 05- Feb- 2018].*
