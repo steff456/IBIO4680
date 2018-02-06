@@ -119,7 +119,7 @@ mogrify -crop 256x256+0+0 $(find -type f -name *.png -o -name *.jpg -o -name *.b
 ## References
 *[1] "What is grep, and how do I use it?", Kb.iu.edu, 2018. [Online]. Available: https://kb.iu.edu/d/afiy. [Accessed: 04- Feb- 2018].*
 
-*[2] "What is the function of bash shebang?", stackExchange, 2017. .
+*[2] "What is the function of bash shebang?", stackExchange, 2017. .*
 
 *[3] "How To View System Users in Linux on Ubuntu | DigitalOcean", Digitalocean.com, 2018. [Online]. Available: https://www.digitalocean.com/community/tutorials/how-to-view-system-users-in-linux-on-ubuntu. [Accessed: 04- Feb- 2018].*
 
