@@ -34,6 +34,9 @@ Returning one line per each coincidence. The command is mainly used for searchin
 
 The `cut -f 1,7 -d: /etc/passwd` command will trim the contents of the passwd file respecting the first and seventh field  (-f 1,7) defined by the delimiter `“ : ”(-d:)`, after that, this information is passed to the tr command that replaces all `“ : ”` by spaces `“ ”` in order to have a table separated by spaces, then, this new table is passed to the sort command that organizes the lines respecting the second field (-k2) whch corresponds to the original seventh field: the shell of each user [5].
 
+![Image of terminal]
+(https://github.com/steff456/IBIO4680/blob/master/01-Linux/Answers/Fig1.png)
+
 5. Script developed for finding duplicate images based on their content
 
 ```
