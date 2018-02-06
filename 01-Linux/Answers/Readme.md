@@ -113,6 +113,9 @@ It was found that there are 348 images in landscape orientation (width > height)
 mogrify -crop 256x256+0+0 $(find -type f -name *.png -o -name *.jpg -o -name *.bmp -o -name *.tiff) 
 ```
 
+![alt text](https://github.com/steff456/IBIO4680/blob/master/01-Linux/Answers/Fig2.png)
+![alt text](https://github.com/steff456/IBIO4680/blob/master/01-Linux/Answers/Fig3.png)
+
 ## References
 *[1] "What is grep, and how do I use it?", Kb.iu.edu, 2018. [Online]. Available: https://kb.iu.edu/d/afiy. [Accessed: 04- Feb- 2018].*
 *[2] "What is the function of bash shebang?", stackExchange, 2017. .
