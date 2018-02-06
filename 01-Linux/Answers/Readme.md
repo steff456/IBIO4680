@@ -1,5 +1,7 @@
 #Computer vision 
+
 ##Lab 1 Linux - Git
+
 ###Sergio Alberto Galindo León, Stephannie Jimenez Gacha
 
 1. `grep` is a Unix command that finds all lines in the text documents of an specified directory or file that contains (embedded or not) a given word, words or phrase [1]. It’s syntax is:
