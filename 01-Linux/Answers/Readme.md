@@ -1,8 +1,8 @@
-#Computer vision 
+# Computer vision 
 
-##Lab 1 Linux - Git
+## Lab 1 Linux - Git
 
-###Sergio Alberto Galindo León, Stephannie Jimenez Gacha
+### Sergio Alberto Galindo León - Stephannie Jimenez Gacha
 
 1. `grep` is a Unix command that finds all lines in the text documents of an specified directory or file that contains (embedded or not) a given word, words or phrase [1]. It’s syntax is:
 
@@ -34,4 +34,41 @@ Returning one line per each coincidence. The command is mainly used for searchin
 
 The `cut -f 1,7 -d: /etc/passwd` command will trim the contents of the passwd file respecting the first and seventh field  (-f 1,7) defined by the delimiter `“ : ”(-d:)`, after that, this information is passed to the tr command that replaces all `“ : ”` by spaces `“ ”` in order to have a table separated by spaces, then, this new table is passed to the sort command that organizes the lines respecting the second field (-k2) whch corresponds to the original seventh field: the shell of each user [5].
 
-5. 
+5. Script developed for finding duplicate images based on their content
+
+```
+#!/bin/bash
+cd ~
+
+rm -r duplicate_images 2>/dev/null
+mkdir duplicate_images
+
+imagenes=$(find sipi_images -name *.tiff)
+
+for im1 in ${imagenes[*]}
+do 
+
+a=$(sha1sum $im1 | cut -f1 -d" ")
+a1=$(sha1sum $im1 | cut -f3 -d" ")
+
+for im2 in ${imagenes[*]}
+do
+b=$(sha1sum $im2 | cut -f1 -d" ")
+b1=$(sha1sum $im2 | cut -f3 -d" ")
+
+
+if [ "$a" == "$b" ] && [ "$a1" != "$b1" ]
+
+then
+echo "find duplicate"
+echo $im1
+echo $im2
+cp $im1 duplicate_images
+cp $im2 duplicate_images
+
+fi 
+
+done 
+done
+
+```
