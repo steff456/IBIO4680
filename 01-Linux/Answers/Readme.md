@@ -118,8 +118,13 @@ mogrify -crop 256x256+0+0 $(find -type f -name *.png -o -name *.jpg -o -name *.b
 
 ## References
 *[1] "What is grep, and how do I use it?", Kb.iu.edu, 2018. [Online]. Available: https://kb.iu.edu/d/afiy. [Accessed: 04- Feb- 2018].*
+
 *[2] "What is the function of bash shebang?", stackExchange, 2017. .
+
 *[3] "How To View System Users in Linux on Ubuntu | DigitalOcean", Digitalocean.com, 2018. [Online]. Available: https://www.digitalocean.com/community/tutorials/how-to-view-system-users-in-linux-on-ubuntu. [Accessed: 04- Feb- 2018].*
+
 *[4] "IBM Knowledge Center", Ibm.com, 2018. [Online]. Available: https://www.ibm.com/support/knowledgecenter/en/ssw_aix_72/com.ibm.aix.security/passwords_etc_passwd_file.htm. [Accessed: 04- Feb- 2018].*
+
 *[5] "Ubuntu Manpage: wc - print newline, word, and byte counts for each file", Manpages.ubuntu.com, 2018. [Online]. Available: http://manpages.ubuntu.com/manpages/trusty/man1/wc.1.html. [Accessed: 05- Feb- 2018].*
+
 *[6] A. Thyssen, "Cutting and Bordering -- IM v6 Examples", Imagemagick.org, 2018. [Online]. Available: http://www.imagemagick.org/Usage/crop/#crop. [Accessed: 05- Feb- 2018].*
