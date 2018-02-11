@@ -6,6 +6,9 @@ import numpy as np
 import random
 import cv2
 import scipy.io as sio
+import time
+
+start_t = time.time()
 
 #Download of the database
 if not osp.exists('BSR'):
@@ -50,7 +53,7 @@ os.mkdir(out)
 
 n= N
 #Transforms the N images to 256x256 and save them on the new folder
-print('------ Resize + Save ------')
+print('------ Resize + New Folder ------')
 while(n>0):
     #Get the images and groundtruths
     mat_act = sio.loadmat(seen[seen_keys[(n-1)]][0])['groundTruth']
@@ -102,4 +105,7 @@ for i in range(1,P+1):
     img_p = plt.imshow(img_act)
     j+=1
 
+total_t = (time.time()-start_t)
 plt.show()
+
+print('------ '+ str(total_t) + ' seconds ------')
