@@ -41,7 +41,7 @@ gp_rog = [rog_or]
 gp_edg = [edg_or]
 
 #Create the gaussian pyramid for each one of the images
-for i in range(0,4):
+for i in range(0,5):
     #First image
     col, row, _ = gp_rog[-1].shape
     rog_act = cv2.pyrDown(gp_rog[-1]) #, dstsize = (2//col, 2//row))
@@ -55,27 +55,49 @@ for i in range(0,4):
 lp_rog = []
 lp_edg = []
 
-#Create the laplacian pyramid for each one of the images
-for i in range(0,4):
+#Create the laplacian pyramid for each one of the images - 4 levels
+for i in range(0,5):
     #First image
     x_rog = gp_rog[i]
     px_rog = gp_rog[(i+1)]
     fgx_rog = cv2.pyrUp(px_rog)
-    if x_rog.shape != fgx_rog.shape:
+    if x_rog.shape != fgx_rog.shape: #In the case of odd sizes
         fgx_rog = fgx_rog[:,:-1,:]
     rog_act = cv2.subtract(x_rog, fgx_rog)
     lp_rog.append(rog_act)
-    print(x_rog.shape) 
-    print(fgx_rog.shape)
     #Second image
     x_edg = gp_edg[i]
     px_edg = gp_edg[(i+1)]
     fgx_edg = cv2.pyrUp(px_edg)
-    if x_edg.shape != fgx_edg.shape:
+    if x_edg.shape != fgx_edg.shape: #In the case of odd sizes
         fgx_edg = fgx_edg[:,:-1,:]
     edg_act = cv2.subtract(x_edg, fgx_edg)
     lp_edg.append(edg_act)
-    print(x_edg.shape) 
-    print(fgx_edg.shape)
 
-#Create the image using half and half
+#Join each half on each level of the pyramid and save them in new list L
+L = []
+for i in range(0,5):
+    edg = lp_edg[i]
+    rog = lp_rog[i]
+    col, row, _ = edg.shape
+    l_act = np.hstack((edg[:,0:int(row/2),:],rog[:,int(row/2):,:]))
+    L.append(l_act)
+
+#Reconstruct the blended image
+B = L[-1]
+for i in range(2,6):
+    act = L[-i]
+    temp = cv2.pyrUp(B)
+    if act.shape != temp.shape:
+        temp = temp[:,:-1,:]
+    B = cv2.add(temp, act)
+
+#Decompose the channels
+b,g,r = cv2.split(B)
+
+#Create RGB image from scratch
+B_rgb = cv2.merge([r,g,b])    
+
+#Show the blended image
+plt.imshow(B_rgb)
+plt.show()
