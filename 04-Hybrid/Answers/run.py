@@ -4,6 +4,14 @@ import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 import scipy.misc as sm
 
+#Definition for graphing cv2 in matplotlib
+def graph_cv2(im):
+    #Decompose the channels
+    b,g,r = cv2.split(im)
+    #Create RGB image from scratch
+    im_rgb = cv2.merge([r,g,b])
+    return im_rgb  
+
 print("--------- Loading Images ---------")
 #The images are imported to the workspace
 route = "./Files/"
@@ -21,11 +29,8 @@ edg_hf = cv2.subtract(edg_or, edg_lp)
 #The hybrid image is created.
 H = rog_hf + edg_lp
 
-#Obtain each channel
-b,g,r = cv2.split(H)
-
-#Create RGB image from scratch
-H_rgb = cv2.merge([r,g,b])    
+#Pass to RGB
+H_rgb = graph_cv2(H)    
 
 #Show the hybrid image
 plt.imshow(H_rgb)
@@ -40,17 +45,19 @@ print("--------- Blended Image ---------")
 gp_rog = [rog_or]
 gp_edg = [edg_or]
 
+print("--------- Creating Gaussian Pyramid ---------")
 #Create the gaussian pyramid for each one of the images
 for i in range(0,5):
     #First image
     col, row, _ = gp_rog[-1].shape
-    rog_act = cv2.pyrDown(gp_rog[-1]) #, dstsize = (2//col, 2//row))
+    rog_act = cv2.pyrDown(gp_rog[-1])
     gp_rog.append(rog_act)
     #Second image
     col, row, _ = gp_edg[-1].shape
-    edg_act = cv2.pyrDown(gp_edg[-1]) #, dstsize = (2//col, 2//row))
+    edg_act = cv2.pyrDown(gp_edg[-1])
     gp_edg.append(edg_act)
 
+print("--------- Creating Laplacian Pyramid ---------")
 #The list fot the lapacian pyramids for both images is initialized
 lp_rog = []
 lp_edg = []
@@ -74,6 +81,7 @@ for i in range(0,5):
     edg_act = cv2.subtract(x_edg, fgx_edg)
     lp_edg.append(edg_act)
 
+print("--------- Joining Half Images per Level ---------")
 #Join each half on each level of the pyramid and save them in new list L
 L = []
 for i in range(0,5):
@@ -83,7 +91,9 @@ for i in range(0,5):
     l_act = np.hstack((edg[:,0:int(row/2),:],rog[:,int(row/2):,:]))
     L.append(l_act)
 
+print("--------- Reconstructing Image ---------")
 #Reconstruct the blended image
+samples = []
 B = L[-1]
 for i in range(2,6):
     act = L[-i]
@@ -91,13 +101,16 @@ for i in range(2,6):
     if act.shape != temp.shape:
         temp = temp[:,:-1,:]
     B = cv2.add(temp, act)
+    samples.append(B)
 
-#Decompose the channels
-b,g,r = cv2.split(B)
+#Pass to RGB
+B_rgb = graph_cv2(B)  
 
-#Create RGB image from scratch
-B_rgb = cv2.merge([r,g,b])    
+print("--------- Saving the Blended Image to the Files Directory ---------")
+#Saves the image in the Files directory.
+cv2.imwrite(route + 'blended_pyramid.png', B)
 
 #Show the blended image
 plt.imshow(B_rgb)
 plt.show()
+
