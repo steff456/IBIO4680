@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import numpy as np
 import cv2
 import matplotlib.pyplot as plt
@@ -159,8 +160,4 @@ plt.imshow(graph_cv2(fim))
 fig.add_subplot(2,3,4)
 fim = samples[-4]
 plt.imshow(graph_cv2(fim))
-fig.add_subplot(2,3,5)
-fim = samples[-5]
-plt.imshow(graph_cv2(fim))
 plt.show()
-
