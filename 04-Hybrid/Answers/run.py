@@ -110,7 +110,57 @@ print("--------- Saving the Blended Image to the Files Directory ---------")
 #Saves the image in the Files directory.
 cv2.imwrite(route + 'blended_pyramid.png', B)
 
-#Show the blended image
+#Show the blended image vs non-blended
+col, row, _ = edg_or.shape
+
+nB = np.hstack((edg_or[:,0:int(row/2),:],rog_or[:,int(row/2):,:]))
+
+cv2.imwrite(route + 'non_blended.png', nB)
+
+nB_rgb = graph_cv2(nB)
+
+fig = plt.figure()
+fig.add_subplot(1,2,1)
 plt.imshow(B_rgb)
+fig.add_subplot(1,2,2)
+plt.imshow(nB_rgb)
+plt.show()
+
+print("--------- Showing the gaussian pyramid ---------")
+fig = plt.figure()
+fig.add_subplot(2,3,1)
+fim = gp_rog[-1]
+plt.imshow(graph_cv2(fim))
+fig.add_subplot(2,3,2)
+fim = gp_rog[-2]
+plt.imshow(graph_cv2(fim))
+fig.add_subplot(2,3,3)
+fim = gp_rog[-3]
+plt.imshow(graph_cv2(fim))
+fig.add_subplot(2,3,4)
+fim = gp_rog[-4]
+plt.imshow(graph_cv2(fim))
+fig.add_subplot(2,3,5)
+fim = gp_rog[-5]
+plt.imshow(graph_cv2(fim))
+plt.show()
+
+print("--------- Showing the blended pyramid ---------")
+fig = plt.figure()
+fig.add_subplot(2,3,1)
+fim = samples[-1]
+plt.imshow(graph_cv2(fim))
+fig.add_subplot(2,3,2)
+fim = samples[-2]
+plt.imshow(graph_cv2(fim))
+fig.add_subplot(2,3,3)
+fim = samples[-3]
+plt.imshow(graph_cv2(fim))
+fig.add_subplot(2,3,4)
+fim = samples[-4]
+plt.imshow(graph_cv2(fim))
+fig.add_subplot(2,3,5)
+fim = samples[-5]
+plt.imshow(graph_cv2(fim))
 plt.show()
 
