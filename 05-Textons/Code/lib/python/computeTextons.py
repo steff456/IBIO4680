@@ -6,7 +6,7 @@ def computeTextons(fim,k):
 	data = np.zeros((d,n))
 	count = 0
 	for i in range(np.array(fim).shape[0]):
-		print(str(i) + "-" str(range(np.array(fim).shape[0]))) 
+		print(str(i) + "-" + str(range(np.array(fim).shape[0]))) 
 		for j in range(np.array(fim).shape[1]):
 			data[count,:] = np.array(fim[i][j]).reshape(-1)
 			count += 1

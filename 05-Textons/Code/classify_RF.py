@@ -18,7 +18,7 @@ def classify_RF(k=50, route_texton_rep = '', train_texton = {}, test_texton = {}
         train_texton, test_texton = np.load(route_texton_rep, encoding = 'latin1')
 
     #verifies there's data to classify
-    if train_texton.isEmpty() and test_texton.isEmpty():
+    if len(train_texton) == 0 or len(test_texton) == 0:
         print('STOP - Error in the data!')
         return 0
 
@@ -72,7 +72,7 @@ def classify_RF(k=50, route_texton_rep = '', train_texton = {}, test_texton = {}
 
     print('---------- Fit Train Data to Classifier ----------')
     #Fit with training data
-    knn.fit(train_data, train_labels)
+    rf.fit(train_data, train_labels)
 
     print('---------- Predict Test Data ----------')
     #Predict the test data

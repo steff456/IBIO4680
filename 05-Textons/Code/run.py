@@ -1,12 +1,18 @@
 from create_texton_representation import create_texton_representation
 from classify_KNN import classify_KNN
 from classify_RF import classify_RF
+import os
 
 #Main menu of the application
 a = True
 train_textons = []
 test_textons = []
 k = 50
+
+print('---------- Unziping pre calculated results ------------')
+os.system('unzip results_200.zip')
+os.system('unzip results_100.zip')
+
 routes = ['./100x100 - 10t/texton_representation.npy', './100x100 - 20t/texton_representation.npy',
 './100x100 - 30t/texton_representation.npy', './200x200 - 10t/texton_representation.npy',
 './200x200 - 20t/texton_representation.npy', './200x200 - 30t/texton_representation.npy']
@@ -17,7 +23,7 @@ while(a):
     print('2. Classify Nearest Neighbour')
     print('3. Classify Random Forest')
     print('4. Exit')
-    a = raw_input()
+    a = input('\n')
     if a == '1':
         #Without changing any parameter
         train_textons, test_textons = create_texton_representation()
@@ -31,7 +37,7 @@ while(a):
         print('7. new~!')
         print('8. Calculate all!')
         print('9. Cancel')
-        b = raw_input('Select Database')
+        b = input('Select Database \n')
         if b == '1':
             route = routes[0]
             p = classify_KNN(k, route)
@@ -70,7 +76,7 @@ while(a):
         print('7. new~!')
         print('8. Calculate all!')
         print('9. Cancel')
-        b = raw_input('Select Database')
+        b = input('Select Database \n')
         if b == '1':
             route = routes[0]
             p = classify_RF(k, route)
