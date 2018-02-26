@@ -1,5 +1,6 @@
 from create_texton_representation import create_texton_representation
 from classify_KNN import classify_KNN
+from classify_RF import classify_RF
 
 #Main menu of the application
 a = True
