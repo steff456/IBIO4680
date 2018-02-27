@@ -2,6 +2,13 @@ import numpy as np
 from sklearn import neighbors, datasets
 import os.path as osp
 import os
+import sys
+import matplotlib.pyplot as plt
+sys.path.append('lib/python')
+from confusion_matrix import plot_confusion_matrix
+from sklearn.metrics import confusion_matrix
+import time
+
 #route_map_tex = 'map_textons.npy'
 #route_texton_rep = 'texton_representation.npy'
 
@@ -12,6 +19,8 @@ import os
 #test_texton is new dict with texton representation for the test data
 def classify_KNN(k=50, route_texton_rep = '', train_texton = {}, test_texton = {}):
     #map, textons = np.load(route_map_tex, encoding='latin1')
+    #Start time
+    start_t = time.time()
     #Loads data from the route
     if osp.exists(route_texton_rep):
         print('---------- Importing Data ----------')
@@ -78,15 +87,11 @@ def classify_KNN(k=50, route_texton_rep = '', train_texton = {}, test_texton = {
     #Predict the test data
     res = knn.predict(test_data)
 
-    print('---------- Calculating Number of True Positives ----------')
-    count = 0
-    for i in range(0,len(test_labels)):
-        print(test_labels[i])
-        print(res[i])
-        print('-------')
-        if test_labels[i] == res[i]:
-            count +=1
+    print('---------- Calculating Confussion Matrix ----------')
+    cnf = confusion_matrix(test_labels,res)
+    plot_confusion_matrix(cnf, classes = list(train_texton.keys()), normalize = True)
+    total_t = (time.time()-start_t)
+    print('---------- Total time = '+ str(total_t) + ' ----------')
+    plt.show()
 
-    percentage = (count/len(test_labels))*100
-    print(str(percentage) + '%')
-    return percentage
+    return cnf
