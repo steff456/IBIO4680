@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 sys.path.append('lib/python')
 from confusion_matrix import plot_confusion_matrix
 from sklearn.metrics import confusion_matrix
+from sklearn.metrics import accuracy_score
 import time
 #route_map_tex = 'map_textons.npy'
 #route_texton_rep = 'texton_representation.npy'
@@ -88,7 +89,11 @@ def classify_RF(k=50, route_texton_rep = '', train_texton = {}, test_texton = {}
 
     print('---------- Calculating Number of True Positives ----------')
     cnf = confusion_matrix(test_labels,res)
-    plot_confusion_matrix(cnf, classes = list(train_texton.keys()), normalize = True)
+    acc = plot_confusion_matrix(cnf, classes = list(train_texton.keys()), normalize = True)
+
+    print('---------- Calculating ACA ----------')
+    print('accuracy = ' + str(acc))
+
     total_t = (time.time()-start_t)
     print('---------- Total time = '+ str(total_t) + ' ----------')
     plt.show()

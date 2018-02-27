@@ -32,6 +32,10 @@ def plot_confusion_matrix(cm, classes,
                  horizontalalignment="center",
                  color="white" if cm[i, j] > thresh else "black")
 
+    diag = np.diag(cm)
+    print(diag)
+    acc = np.average(diag)
     #plt.tight_layout()
     plt.ylabel('True label')
     plt.xlabel('Predicted label')
+    return acc
