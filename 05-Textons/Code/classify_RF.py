@@ -76,7 +76,7 @@ def classify_RF(k=50, route_texton_rep = '', train_texton = {}, test_texton = {}
 
     print('---------- Create the KN Classifier ----------')
     #Create KN classifier
-    rf = RandomForestClassifier(max_depth = 2, random_state = 0)
+    rf = RandomForestClassifier()
 
     print('---------- Fit Train Data to Classifier ----------')
     #Fit with training data
