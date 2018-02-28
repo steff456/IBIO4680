@@ -66,7 +66,7 @@ def classify_RF(k=50, route_texton_rep = '', train_texton = {}, test_texton = {}
     #Calculates the histograms for the test data
     for key in test_texton.keys():
         l = test_texton[key]
-        for i in range(0,len(l)):
+        for i in range(len(l)-1,len(l)-11,-1):
             if i == 0:
                 m_act = l[i]
             else:

@@ -6,8 +6,8 @@ import os
 
 #Main menu of the application
 a = True
-train_textons = []
-test_textons = []
+train_textons = {}
+test_textons = {}
 k = 50
 
 print('---------- Unziping pre calculated results ------------')
