@@ -82,6 +82,16 @@ def classify_RF(k=50, route_texton_rep = '', train_texton = {}, test_texton = {}
     print('---------- Fit Train Data to Classifier ----------')
     #Fit with training data
     rf.fit(train_data, train_labels)
+    
+    print('---------- Predict Train Data ----------')
+    #Predict the train data
+    res1 = rf.predict(train_data)
+
+    print('---------- Calculating Number of True Positives Train ----------')
+    cnf1 = confusion_matrix(train_labels,res1)
+    acc1 = plot_confusion_matrix(cnf1, classes = list(train_texton.keys()), normalize = True)
+    plt.show()
+
 
     print('---------- Predict Test Data ----------')
     #Predict the test data
@@ -90,6 +100,9 @@ def classify_RF(k=50, route_texton_rep = '', train_texton = {}, test_texton = {}
     print('---------- Calculating Number of True Positives ----------')
     cnf = confusion_matrix(test_labels,res)
     acc = plot_confusion_matrix(cnf, classes = list(train_texton.keys()), normalize = True)
+
+    print('---------- Calculating ACA Train----------')
+    print('accuracy = ' + str(acc1))
 
     print('---------- Calculating ACA ----------')
     print('accuracy = ' + str(acc))

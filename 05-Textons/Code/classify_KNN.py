@@ -84,16 +84,28 @@ def classify_KNN(k=50, route_texton_rep = '', train_texton = {}, test_texton = {
     #Fit with training data
     knn.fit(train_data, train_labels)
 
+    print('---------- Predict Train Data ----------')
+    #Predict the train data
+    res1 = knn.predict(train_data)
+
+    print('---------- Calculating Confussion Matrix for Training ----------')
+    cnf1 = confusion_matrix(train_labels,res1)
+    accTrain = plot_confusion_matrix(cnf1, classes = list(train_texton.keys()), normalize = True)
+    plt.show()
+
     print('---------- Predict Test Data ----------')
     #Predict the test data
     res = knn.predict(test_data)
 
-    print('---------- Calculating Confussion Matrix ----------')
+    print('---------- Calculating Confussion Matrix for Test ----------')
     cnf = confusion_matrix(test_labels,res)
-    acc = plot_confusion_matrix(cnf, classes = list(train_texton.keys()), normalize = True)
+    accTest = plot_confusion_matrix(cnf, classes = list(train_texton.keys()), normalize = True)
 
-    print('---------- Calculating ACA ----------')
-    print('accuracy = ' + str(acc))
+    print('---------- Calculating ACA Train----------')
+    print('accuracy = ' + str(accTrain))
+   
+    print('---------- Calculating ACA Train----------')
+    print('accuracy = ' + str(accTest))
 
     total_t = (time.time()-start_t)
     print('---------- Total time = '+ str(total_t) + ' ----------')
