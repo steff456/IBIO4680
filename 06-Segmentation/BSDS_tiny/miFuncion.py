@@ -24,7 +24,6 @@ def load_image( infilename ) :
     img.load()
     data = np.asarray( img, dtype="uint8" )
     return data
-
 #main function performing segmentation
 def segmentByClustering(rgbImage, featureSpace, clusteringMethod, numberOfClusters):
     #verify the image is in np array, if not, it is casted
@@ -900,12 +899,12 @@ for keyim in image_list.keys():
     anot2=annotation_list[keyim][1]
     anot3=annotation_list[keyim][2]
     #Different segmentation depending on feature space
-    a=segmentByClustering(image,'rgb','hierarchical',5)
-    b=segmentByClustering(image,'lab','hierarchical',5)
-    c=segmentByClustering(image,'hsv','hierarchical',5)
-    d=segmentByClustering(image,'rgb+xy','hierarchical',5)
-    e=segmentByClustering(image,'lab+xy','hierarchical',5)
-    f=segmentByClustering(image,'hsv+xy','hierarchical',5)
+    a=np.resize(segmentByClustering(np.resize(image,(100,100,3)),'rgb','hierarchical',5),(image.shape[0],image.shape[1]))
+    b=np.resize(segmentByClustering(np.resize(image,(100,100,3)),'lab','hierarchical',5),(image.shape[0],image.shape[1]))
+    c=np.resize(segmentByClustering(np.resize(image,(100,100,3)),'hsv','hierarchical',5),(image.shape[0],image.shape[1]))
+    d=np.resize(segmentByClustering(np.resize(image,(100,100,5)),'rgb+xy','hierarchical',5),(image.shape[0],image.shape[1]))
+    e=np.resize(segmentByClustering(np.resize(image,(100,100,5)),'lab+xy','hierarchical',5),(image.shape[0],image.shape[1]))
+    f=np.resize(segmentByClustering(np.resize(image,(100,100,5)),'hsv+xy','hierarchical',5),(image.shape[0],image.shape[1]))
     #number of objects in annotations for subject1,2 and 3
     numanot1=np.unique(anot1).shape[0]
     numanot2=np.unique(anot2).shape[0]
