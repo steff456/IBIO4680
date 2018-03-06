@@ -1155,3 +1155,5 @@ for keyim in image_list.keys():
     resp[contador,5,2]= np.mean([jac1a,jac2a,jac3a])
     contador=contador+1
     print(contador)
+
+np.save('respuestasTotales',resp)
