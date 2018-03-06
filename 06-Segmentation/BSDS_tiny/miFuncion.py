@@ -17,7 +17,6 @@ from skimage.morphology import watershed
 from skimage.feature import peak_local_max
 import glob
 import math
-
 #function to load images from folder as np.array
 def load_image( infilename ) :
     img = Image.open( infilename )
@@ -30,7 +29,7 @@ def segmentByClustering(rgbImage, featureSpace, clusteringMethod, numberOfCluste
     rgbImage=np.array(rgbImage)
     #color and space maximum normalization values. It will change the representativeness of each channel
     colmax=5
-    spacemax=50
+    spacemax=5
     #Image in RGB
     if featureSpace == 'rgb':
         image=rgbImage
@@ -94,11 +93,8 @@ def segmentByClustering(rgbImage, featureSpace, clusteringMethod, numberOfCluste
         return seg
     elif clusteringMethod=='hierarchical':
         imager=np.reshape(image,(1,image.shape[0]*image.shape[1],image.shape[2]))[0]
-        print('Estoy creando el clusterizador')
         hierClus=cluster.AgglomerativeClustering(n_clusters=numberOfClusters,affinity='euclidean')
-        print('Estoy prediciendo los datos')
         assig=hierClus.fit_predict(imager)
-        print('Ya acabe de predecir')
         seg=np.reshape(assig,(image.shape[0],image.shape[1]))
         return seg
     elif clusteringMethod=='watershed':
@@ -899,12 +895,12 @@ for keyim in image_list.keys():
     anot2=annotation_list[keyim][1]
     anot3=annotation_list[keyim][2]
     #Different segmentation depending on feature space
-    a=np.resize(segmentByClustering(np.resize(image,(100,100,3)),'rgb','hierarchical',5),(image.shape[0],image.shape[1]))
-    b=np.resize(segmentByClustering(np.resize(image,(100,100,3)),'lab','hierarchical',5),(image.shape[0],image.shape[1]))
-    c=np.resize(segmentByClustering(np.resize(image,(100,100,3)),'hsv','hierarchical',5),(image.shape[0],image.shape[1]))
-    d=np.resize(segmentByClustering(np.resize(image,(100,100,5)),'rgb+xy','hierarchical',5),(image.shape[0],image.shape[1]))
-    e=np.resize(segmentByClustering(np.resize(image,(100,100,5)),'lab+xy','hierarchical',5),(image.shape[0],image.shape[1]))
-    f=np.resize(segmentByClustering(np.resize(image,(100,100,5)),'hsv+xy','hierarchical',5),(image.shape[0],image.shape[1]))
+    a=np.resize(segmentByClustering(np.resize(image,(100,100,3)),'rgb','hierarchical',numberOfClusters),(image.shape[0],image.shape[1]))
+    b=np.resize(segmentByClustering(np.resize(image,(100,100,3)),'lab','hierarchical',numberOfClusters),(image.shape[0],image.shape[1]))
+    c=np.resize(segmentByClustering(np.resize(image,(100,100,3)),'hsv','hierarchical',numberOfClusters),(image.shape[0],image.shape[1]))
+    d=np.resize(segmentByClustering(np.resize(image,(100,100,3)),'rgb+xy','hierarchical',numberOfClusters),(image.shape[0],image.shape[1]))
+    e=np.resize(segmentByClustering(np.resize(image,(100,100,3)),'lab+xy','hierarchical',numberOfClusters),(image.shape[0],image.shape[1]))
+    f=np.resize(segmentByClustering(np.resize(image,(100,100,3)),'hsv+xy','hierarchical',numberOfClusters),(image.shape[0],image.shape[1]))
     #number of objects in annotations for subject1,2 and 3
     numanot1=np.unique(anot1).shape[0]
     numanot2=np.unique(anot2).shape[0]
@@ -1155,4 +1151,5 @@ for keyim in image_list.keys():
     contador=contador+1
     print(contador)
 
-np.save('respuestasTotales',resp)
+np.save('FinalResults10',resp)
+
