@@ -892,6 +892,7 @@ for keyim in image_list.keys():
 
 
 #to fill the hierarchical table = resp[:,:,2]----------------------------------------------------------
+print('Estoy haciendo jerarquicas')
 contador=0
 for keyim in image_list.keys():
     image=image_list[keyim]
@@ -1154,29 +1155,3 @@ for keyim in image_list.keys():
     resp[contador,5,2]= np.mean([jac1a,jac2a,jac3a])
     contador=contador+1
     print(contador)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-a=load_image('55075.jpg')
-segmentByClustering(a,'lab+xy','kmeans',5)
-
-
-
-
-
-
-
