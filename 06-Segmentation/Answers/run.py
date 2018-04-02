@@ -55,7 +55,7 @@ print("--------- Evaluation of the Segmentation ---------")
 #for each clustering method all space colors will be used for each image
 #Responses for k means method
 resp=np.zeros([len(image_list),6,4])
-
+numberOfClusters=5
 #to fill the Kmeans table = resp[:,:,0]----------------------------------------------------------
 print("--------- K-means ---------")
 contador=0
@@ -65,12 +65,12 @@ for keyim in image_list.keys():
     anot2=annotation_list[keyim][1]
     anot3=annotation_list[keyim][2]
     #Different segmentation depending on feature space
-    a=segmentByClustering(image,'rgb','kmeans',5)
-    b=segmentByClustering(image,'lab','kmeans',5)
-    c=segmentByClustering(image,'hsv','kmeans',5)
-    d=segmentByClustering(image,'rgb+xy','kmeans',5)
-    e=segmentByClustering(image,'lab+xy','kmeans',5)
-    f=segmentByClustering(image,'hsv+xy','kmeans',5)
+    a=segmentByClustering(image,'rgb','kmeans',numberOfClusters)
+    b=segmentByClustering(image,'lab','kmeans',numberOfClusters)
+    c=segmentByClustering(image,'hsv','kmeans',numberOfClusters)
+    d=segmentByClustering(image,'rgb+xy','kmeans',numberOfClusters)
+    e=segmentByClustering(image,'lab+xy','kmeans',numberOfClusters)
+    f=segmentByClustering(image,'hsv+xy','kmeans',numberOfClusters)
     #number of objects in annotations for subject1,2 and 3
     numanot1=np.unique(anot1).shape[0]
     numanot2=np.unique(anot2).shape[0]
@@ -309,12 +309,12 @@ for keyim in image_list.keys():
     anot2=annotation_list[keyim][1]
     anot3=annotation_list[keyim][2]
     #Different segmentation depending on feature space
-    a=segmentByClustering(image,'rgb','gmm',5)
-    b=segmentByClustering(image,'lab','gmm',5)
-    c=segmentByClustering(image,'hsv','gmm',5)
-    d=segmentByClustering(image,'rgb+xy','gmm',5)
-    e=segmentByClustering(image,'lab+xy','gmm',5)
-    f=segmentByClustering(image,'hsv+xy','gmm',5)
+    a=segmentByClustering(image,'rgb','gmm',numberOfClusters)
+    b=segmentByClustering(image,'lab','gmm',numberOfClusters)
+    c=segmentByClustering(image,'hsv','gmm',numberOfClusters)
+    d=segmentByClustering(image,'rgb+xy','gmm',numberOfClusters)
+    e=segmentByClustering(image,'lab+xy','gmm',numberOfClusters)
+    f=segmentByClustering(image,'hsv+xy','gmm',numberOfClusters)
     #number of objects in annotations for subject1,2 and 3
     numanot1=np.unique(anot1).shape[0]
     numanot2=np.unique(anot2).shape[0]
@@ -553,12 +553,12 @@ for keyim in image_list.keys():
     anot2=annotation_list[keyim][1]
     anot3=annotation_list[keyim][2]
     #Different segmentation depending on feature space
-    a=segmentByClustering(image,'rgb','watershed',5)
-    b=segmentByClustering(image,'lab','watershed',5)
-    c=segmentByClustering(image,'hsv','watershed',5)
-    d=segmentByClustering(image,'rgb+xy','watershed',5)
-    e=segmentByClustering(image,'lab+xy','watershed',5)
-    f=segmentByClustering(image,'hsv+xy','watershed',5)
+    a=segmentByClustering(image,'rgb','watershed',numberOfClusters)
+    b=segmentByClustering(image,'lab','watershed',numberOfClusters)
+    c=segmentByClustering(image,'hsv','watershed',numberOfClusters)
+    d=segmentByClustering(image,'rgb+xy','watershed',numberOfClusters)
+    e=segmentByClustering(image,'lab+xy','watershed',numberOfClusters)
+    f=segmentByClustering(image,'hsv+xy','watershed',numberOfClusters)
     #number of objects in annotations for subject1,2 and 3
     numanot1=np.unique(anot1).shape[0]
     numanot2=np.unique(anot2).shape[0]
@@ -1075,5 +1075,5 @@ for keyim in image_list.keys():
     print(contador)
 
 print("--------- Saving Final results ---------")
-np.save('FinalResults10',resp)
+np.save('FinalResults5',resp)
 
