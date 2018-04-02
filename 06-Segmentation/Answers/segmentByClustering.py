@@ -106,4 +106,5 @@ def segmentByClustering(rgbImage, featureSpace, clusteringMethod, numberOfCluste
         local_max = peak_local_max(-1*image, indices=False,num_peaks=numberOfClusters,num_peaks_per_label=1)
         markers=ndi.label(local_max)[0]
         seg=watershed(image,markers)
+        seg=seg-1
         return seg

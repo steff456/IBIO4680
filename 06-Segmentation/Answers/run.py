@@ -89,8 +89,8 @@ for keyim in image_list.keys():
     jac1a=np.mean(np.sort(Jaccardsa)[-5:])
     #for segmentation "a", human2
     Jaccardsa=[]
-    for i in range(numanot1+1)[1:]:
-        anotacioni=(anot1==i)
+    for i in range(numanot2+1)[1:]:
+        anotacioni=(anot2==i)
         Janoti=[]
         for j in range(np.unique(a).shape[0]):
             segmentationi=(a==j)
@@ -102,7 +102,7 @@ for keyim in image_list.keys():
     #for segmentation "a", human3
     Jaccardsa=[]
     for i in range(numanot3+1)[1:]:
-        anotacioni=(anot1==i)
+        anotacioni=(anot3==i)
         Janoti=[]
         for j in range(np.unique(a).shape[0]):
             segmentationi=(a==j)
@@ -126,8 +126,8 @@ for keyim in image_list.keys():
     jac1a=np.mean(np.sort(Jaccardsa)[-5:])
     #for segmentation "b", human2
     Jaccardsa=[]
-    for i in range(numanot1+1)[1:]:
-        anotacioni=(anot1==i)
+    for i in range(numanot2+1)[1:]:
+        anotacioni=(anot2==i)
         Janoti=[]
         for j in range(np.unique(b).shape[0]):
             segmentationi=(b==j)
@@ -139,7 +139,7 @@ for keyim in image_list.keys():
     #for segmentation "b", human3
     Jaccardsa=[]
     for i in range(numanot3+1)[1:]:
-        anotacioni=(anot1==i)
+        anotacioni=(anot3==i)
         Janoti=[]
         for j in range(np.unique(b).shape[0]):
             segmentationi=(b==j)
@@ -163,8 +163,8 @@ for keyim in image_list.keys():
     jac1a=np.mean(np.sort(Jaccardsa)[-5:])
     #for segmentation "c", human2
     Jaccardsa=[]
-    for i in range(numanot1+1)[1:]:
-        anotacioni=(anot1==i)
+    for i in range(numanot2+1)[1:]:
+        anotacioni=(anot2==i)
         Janoti=[]
         for j in range(np.unique(c).shape[0]):
             segmentationi=(c==j)
@@ -176,7 +176,7 @@ for keyim in image_list.keys():
     #for segmentation "c", human3
     Jaccardsa=[]
     for i in range(numanot3+1)[1:]:
-        anotacioni=(anot1==i)
+        anotacioni=(anot3==i)
         Janoti=[]
         for j in range(np.unique(c).shape[0]):
             segmentationi=(c==j)
@@ -200,8 +200,8 @@ for keyim in image_list.keys():
     jac1a=np.mean(np.sort(Jaccardsa)[-5:])
     #for segmentation "d", human2
     Jaccardsa=[]
-    for i in range(numanot1+1)[1:]:
-        anotacioni=(anot1==i)
+    for i in range(numanot2+1)[1:]:
+        anotacioni=(anot2==i)
         Janoti=[]
         for j in range(np.unique(d).shape[0]):
             segmentationi=(d==j)
@@ -213,7 +213,7 @@ for keyim in image_list.keys():
     #for segmentation "d", human3
     Jaccardsa=[]
     for i in range(numanot3+1)[1:]:
-        anotacioni=(anot1==i)
+        anotacioni=(anot3==i)
         Janoti=[]
         for j in range(np.unique(d).shape[0]):
             segmentationi=(d==j)
@@ -237,8 +237,8 @@ for keyim in image_list.keys():
     jac1a=np.mean(np.sort(Jaccardsa)[-5:])
     #for segmentation "e", human2
     Jaccardsa=[]
-    for i in range(numanot1+1)[1:]:
-        anotacioni=(anot1==i)
+    for i in range(numanot2+1)[1:]:
+        anotacioni=(anot2==i)
         Janoti=[]
         for j in range(np.unique(e).shape[0]):
             segmentationi=(e==j)
@@ -250,7 +250,7 @@ for keyim in image_list.keys():
     #for segmentation "e", human3
     Jaccardsa=[]
     for i in range(numanot3+1)[1:]:
-        anotacioni=(anot1==i)
+        anotacioni=(anot3==i)
         Janoti=[]
         for j in range(np.unique(e).shape[0]):
             segmentationi=(e==j)
@@ -274,8 +274,8 @@ for keyim in image_list.keys():
     jac1a=np.mean(np.sort(Jaccardsa)[-5:])
     #for segmentation "f", human2
     Jaccardsa=[]
-    for i in range(numanot1+1)[1:]:
-        anotacioni=(anot1==i)
+    for i in range(numanot2+1)[1:]:
+        anotacioni=(anot2==i)
         Janoti=[]
         for j in range(np.unique(f).shape[0]):
             segmentationi=(f==j)
@@ -287,7 +287,7 @@ for keyim in image_list.keys():
     #for segmentation "f", human3
     Jaccardsa=[]
     for i in range(numanot3+1)[1:]:
-        anotacioni=(anot1==i)
+        anotacioni=(anot3==i)
         Janoti=[]
         for j in range(np.unique(f).shape[0]):
             segmentationi=(f==j)
@@ -333,8 +333,8 @@ for keyim in image_list.keys():
     jac1a=np.mean(np.sort(Jaccardsa)[-5:])
     #for segmentation "a", human2
     Jaccardsa=[]
-    for i in range(numanot1+1)[1:]:
-        anotacioni=(anot1==i)
+    for i in range(numanot2+1)[1:]:
+        anotacioni=(anot2==i)
         Janoti=[]
         for j in range(np.unique(a).shape[0]):
             segmentationi=(a==j)
@@ -346,7 +346,7 @@ for keyim in image_list.keys():
     #for segmentation "a", human3
     Jaccardsa=[]
     for i in range(numanot3+1)[1:]:
-        anotacioni=(anot1==i)
+        anotacioni=(anot3==i)
         Janoti=[]
         for j in range(np.unique(a).shape[0]):
             segmentationi=(a==j)
@@ -370,8 +370,8 @@ for keyim in image_list.keys():
     jac1a=np.mean(np.sort(Jaccardsa)[-5:])
     #for segmentation "b", human2
     Jaccardsa=[]
-    for i in range(numanot1+1)[1:]:
-        anotacioni=(anot1==i)
+    for i in range(numanot2+1)[1:]:
+        anotacioni=(anot2==i)
         Janoti=[]
         for j in range(np.unique(b).shape[0]):
             segmentationi=(b==j)
@@ -383,7 +383,7 @@ for keyim in image_list.keys():
     #for segmentation "b", human3
     Jaccardsa=[]
     for i in range(numanot3+1)[1:]:
-        anotacioni=(anot1==i)
+        anotacioni=(anot3==i)
         Janoti=[]
         for j in range(np.unique(b).shape[0]):
             segmentationi=(b==j)
@@ -407,8 +407,8 @@ for keyim in image_list.keys():
     jac1a=np.mean(np.sort(Jaccardsa)[-5:])
     #for segmentation "c", human2
     Jaccardsa=[]
-    for i in range(numanot1+1)[1:]:
-        anotacioni=(anot1==i)
+    for i in range(numanot2+1)[1:]:
+        anotacioni=(anot2==i)
         Janoti=[]
         for j in range(np.unique(c).shape[0]):
             segmentationi=(c==j)
@@ -420,7 +420,7 @@ for keyim in image_list.keys():
     #for segmentation "c", human3
     Jaccardsa=[]
     for i in range(numanot3+1)[1:]:
-        anotacioni=(anot1==i)
+        anotacioni=(anot3==i)
         Janoti=[]
         for j in range(np.unique(c).shape[0]):
             segmentationi=(c==j)
@@ -444,8 +444,8 @@ for keyim in image_list.keys():
     jac1a=np.mean(np.sort(Jaccardsa)[-5:])
     #for segmentation "d", human2
     Jaccardsa=[]
-    for i in range(numanot1+1)[1:]:
-        anotacioni=(anot1==i)
+    for i in range(numanot2+1)[1:]:
+        anotacioni=(anot2==i)
         Janoti=[]
         for j in range(np.unique(d).shape[0]):
             segmentationi=(d==j)
@@ -457,7 +457,7 @@ for keyim in image_list.keys():
     #for segmentation "d", human3
     Jaccardsa=[]
     for i in range(numanot3+1)[1:]:
-        anotacioni=(anot1==i)
+        anotacioni=(anot3==i)
         Janoti=[]
         for j in range(np.unique(d).shape[0]):
             segmentationi=(d==j)
@@ -481,8 +481,8 @@ for keyim in image_list.keys():
     jac1a=np.mean(np.sort(Jaccardsa)[-5:])
     #for segmentation "e", human2
     Jaccardsa=[]
-    for i in range(numanot1+1)[1:]:
-        anotacioni=(anot1==i)
+    for i in range(numanot2+1)[1:]:
+        anotacioni=(anot2==i)
         Janoti=[]
         for j in range(np.unique(e).shape[0]):
             segmentationi=(e==j)
@@ -494,7 +494,7 @@ for keyim in image_list.keys():
     #for segmentation "e", human3
     Jaccardsa=[]
     for i in range(numanot3+1)[1:]:
-        anotacioni=(anot1==i)
+        anotacioni=(anot3==i)
         Janoti=[]
         for j in range(np.unique(e).shape[0]):
             segmentationi=(e==j)
@@ -518,8 +518,8 @@ for keyim in image_list.keys():
     jac1a=np.mean(np.sort(Jaccardsa)[-5:])
     #for segmentation "f", human2
     Jaccardsa=[]
-    for i in range(numanot1+1)[1:]:
-        anotacioni=(anot1==i)
+    for i in range(numanot2+1)[1:]:
+        anotacioni=(anot2==i)
         Janoti=[]
         for j in range(np.unique(f).shape[0]):
             segmentationi=(f==j)
@@ -531,7 +531,7 @@ for keyim in image_list.keys():
     #for segmentation "f", human3
     Jaccardsa=[]
     for i in range(numanot3+1)[1:]:
-        anotacioni=(anot1==i)
+        anotacioni=(anot3==i)
         Janoti=[]
         for j in range(np.unique(f).shape[0]):
             segmentationi=(f==j)
@@ -579,8 +579,8 @@ for keyim in image_list.keys():
     print(Jaccardsa)
     #for segmentation "a", human2
     Jaccardsa=[]
-    for i in range(numanot1+1)[1:]:
-        anotacioni=(anot1==i)
+    for i in range(numanot2+1)[1:]:
+        anotacioni=(anot2==i)
         Janoti=[]
         for j in range(np.unique(a).shape[0]):
             segmentationi=(a==j)
@@ -594,7 +594,7 @@ for keyim in image_list.keys():
     #for segmentation "a", human3
     Jaccardsa=[]
     for i in range(numanot3+1)[1:]:
-        anotacioni=(anot1==i)
+        anotacioni=(anot3==i)
         Janoti=[]
         for j in range(np.unique(a).shape[0]):
             segmentationi=(a==j)
@@ -621,8 +621,8 @@ for keyim in image_list.keys():
     jac1a=np.mean(np.sort(Jaccardsa)[-5:])
     #for segmentation "b", human2
     Jaccardsa=[]
-    for i in range(numanot1+1)[1:]:
-        anotacioni=(anot1==i)
+    for i in range(numanot2+1)[1:]:
+        anotacioni=(anot2==i)
         Janoti=[]
         for j in range(np.unique(b).shape[0]):
             segmentationi=(b==j)
@@ -635,7 +635,7 @@ for keyim in image_list.keys():
     #for segmentation "b", human3
     Jaccardsa=[]
     for i in range(numanot3+1)[1:]:
-        anotacioni=(anot1==i)
+        anotacioni=(anot3==i)
         Janoti=[]
         for j in range(np.unique(b).shape[0]):
             segmentationi=(b==j)
@@ -661,8 +661,8 @@ for keyim in image_list.keys():
     jac1a=np.mean(np.sort(Jaccardsa)[-5:])
     #for segmentation "c", human2
     Jaccardsa=[]
-    for i in range(numanot1+1)[1:]:
-        anotacioni=(anot1==i)
+    for i in range(numanot2+1)[1:]:
+        anotacioni=(anot2==i)
         Janoti=[]
         for j in range(np.unique(c).shape[0]):
             segmentationi=(c==j)
@@ -675,7 +675,7 @@ for keyim in image_list.keys():
     #for segmentation "c", human3
     Jaccardsa=[]
     for i in range(numanot3+1)[1:]:
-        anotacioni=(anot1==i)
+        anotacioni=(anot3==i)
         Janoti=[]
         for j in range(np.unique(c).shape[0]):
             segmentationi=(c==j)
@@ -701,8 +701,8 @@ for keyim in image_list.keys():
     jac1a=np.mean(np.sort(Jaccardsa)[-5:])
     #for segmentation "d", human2
     Jaccardsa=[]
-    for i in range(numanot1+1)[1:]:
-        anotacioni=(anot1==i)
+    for i in range(numanot2+1)[1:]:
+        anotacioni=(anot2==i)
         Janoti=[]
         for j in range(np.unique(d).shape[0]):
             segmentationi=(d==j)
@@ -715,7 +715,7 @@ for keyim in image_list.keys():
     #for segmentation "d", human3
     Jaccardsa=[]
     for i in range(numanot3+1)[1:]:
-        anotacioni=(anot1==i)
+        anotacioni=(anot3==i)
         Janoti=[]
         for j in range(np.unique(d).shape[0]):
             segmentationi=(d==j)
@@ -741,8 +741,8 @@ for keyim in image_list.keys():
     jac1a=np.mean(np.sort(Jaccardsa)[-5:])
     #for segmentation "e", human2
     Jaccardsa=[]
-    for i in range(numanot1+1)[1:]:
-        anotacioni=(anot1==i)
+    for i in range(numanot2+1)[1:]:
+        anotacioni=(anot2==i)
         Janoti=[]
         for j in range(np.unique(e).shape[0]):
             segmentationi=(e==j)
@@ -755,7 +755,7 @@ for keyim in image_list.keys():
     #for segmentation "e", human3
     Jaccardsa=[]
     for i in range(numanot3+1)[1:]:
-        anotacioni=(anot1==i)
+        anotacioni=(anot3==i)
         Janoti=[]
         for j in range(np.unique(e).shape[0]):
             segmentationi=(e==j)
@@ -781,8 +781,8 @@ for keyim in image_list.keys():
     jac1a=np.mean(np.sort(Jaccardsa)[-5:])
     #for segmentation "f", human2
     Jaccardsa=[]
-    for i in range(numanot1+1)[1:]:
-        anotacioni=(anot1==i)
+    for i in range(numanot2+1)[1:]:
+        anotacioni=(anot2==i)
         Janoti=[]
         for j in range(np.unique(f).shape[0]):
             segmentationi=(f==j)
@@ -795,7 +795,7 @@ for keyim in image_list.keys():
     #for segmentation "f", human3
     Jaccardsa=[]
     for i in range(numanot3+1)[1:]:
-        anotacioni=(anot1==i)
+        anotacioni=(anot3==i)
         Janoti=[]
         for j in range(np.unique(f).shape[0]):
             segmentationi=(f==j)
@@ -818,12 +818,12 @@ for keyim in image_list.keys():
     anot2=annotation_list[keyim][1]
     anot3=annotation_list[keyim][2]
     #Different segmentation depending on feature space
-    a=np.resize(segmentByClustering(np.resize(image,(100,100,3)),'rgb','hierarchical',numberOfClusters),(image.shape[0],image.shape[1]))
-    b=np.resize(segmentByClustering(np.resize(image,(100,100,3)),'lab','hierarchical',numberOfClusters),(image.shape[0],image.shape[1]))
-    c=np.resize(segmentByClustering(np.resize(image,(100,100,3)),'hsv','hierarchical',numberOfClusters),(image.shape[0],image.shape[1]))
-    d=np.resize(segmentByClustering(np.resize(image,(100,100,3)),'rgb+xy','hierarchical',numberOfClusters),(image.shape[0],image.shape[1]))
-    e=np.resize(segmentByClustering(np.resize(image,(100,100,3)),'lab+xy','hierarchical',numberOfClusters),(image.shape[0],image.shape[1]))
-    f=np.resize(segmentByClustering(np.resize(image,(100,100,3)),'hsv+xy','hierarchical',numberOfClusters),(image.shape[0],image.shape[1]))
+    a=segmentByClustering(image,'rgb','hierarchical',numberOfClusters)
+    b=segmentByClustering(image,'lab','hierarchical',numberOfClusters)
+    c=segmentByClustering(image,'hsv','hierarchical',numberOfClusters)
+    d=segmentByClustering(image,'rgb+xy','hierarchical',numberOfClusters)
+    e=segmentByClustering(image,'lab+xy','hierarchical',numberOfClusters)
+    f=segmentByClustering(image,'hsv+xy','hierarchical',numberOfClusters)
     #number of objects in annotations for subject1,2 and 3
     numanot1=np.unique(anot1).shape[0]
     numanot2=np.unique(anot2).shape[0]
@@ -833,7 +833,7 @@ for keyim in image_list.keys():
     for i in range(numanot1+1)[1:]:
         anotacioni=(anot1==i)
         Janoti=[]
-        for j in range(np.unique(a).shape[0]):
+        for j in np.unique(a):
             segmentationi=(a==j)
             intersec=sum(sum(np.logical_and(anotacioni,segmentationi).astype(int)))
             union=sum(sum(np.logical_or(anotacioni,segmentationi).astype(int)))
@@ -844,10 +844,10 @@ for keyim in image_list.keys():
     print(Jaccardsa)
     #for segmentation "a", human2
     Jaccardsa=[]
-    for i in range(numanot1+1)[1:]:
-        anotacioni=(anot1==i)
+    for i in range(numanot2+1)[1:]:
+        anotacioni=(anot2==i)
         Janoti=[]
-        for j in range(np.unique(a).shape[0]):
+        for j in np.unique(a):
             segmentationi=(a==j)
             intersec=sum(sum(np.logical_and(anotacioni,segmentationi).astype(int)))
             union=sum(sum(np.logical_or(anotacioni,segmentationi).astype(int)))
@@ -859,9 +859,9 @@ for keyim in image_list.keys():
     #for segmentation "a", human3
     Jaccardsa=[]
     for i in range(numanot3+1)[1:]:
-        anotacioni=(anot1==i)
+        anotacioni=(anot3==i)
         Janoti=[]
-        for j in range(np.unique(a).shape[0]):
+        for j in np.unique(a):
             segmentationi=(a==j)
             intersec=sum(sum(np.logical_and(anotacioni,segmentationi).astype(int)))
             union=sum(sum(np.logical_or(anotacioni,segmentationi).astype(int)))
@@ -876,7 +876,7 @@ for keyim in image_list.keys():
     for i in range(numanot1+1)[1:]:
         anotacioni=(anot1==i)
         Janoti=[]
-        for j in range(np.unique(b).shape[0]):
+        for j in np.unique(b):
             segmentationi=(b==j)
             intersec=sum(sum(np.logical_and(anotacioni,segmentationi).astype(int)))
             union=sum(sum(np.logical_or(anotacioni,segmentationi).astype(int)))
@@ -886,10 +886,10 @@ for keyim in image_list.keys():
     jac1a=np.mean(np.sort(Jaccardsa)[-5:])
     #for segmentation "b", human2
     Jaccardsa=[]
-    for i in range(numanot1+1)[1:]:
-        anotacioni=(anot1==i)
+    for i in range(numanot2+1)[1:]:
+        anotacioni=(anot2==i)
         Janoti=[]
-        for j in range(np.unique(b).shape[0]):
+        for j in np.unique(b):
             segmentationi=(b==j)
             intersec=sum(sum(np.logical_and(anotacioni,segmentationi).astype(int)))
             union=sum(sum(np.logical_or(anotacioni,segmentationi).astype(int)))
@@ -900,9 +900,9 @@ for keyim in image_list.keys():
     #for segmentation "b", human3
     Jaccardsa=[]
     for i in range(numanot3+1)[1:]:
-        anotacioni=(anot1==i)
+        anotacioni=(anot3==i)
         Janoti=[]
-        for j in range(np.unique(b).shape[0]):
+        for j in np.unique(b):
             segmentationi=(b==j)
             intersec=sum(sum(np.logical_and(anotacioni,segmentationi).astype(int)))
             union=sum(sum(np.logical_or(anotacioni,segmentationi).astype(int)))
@@ -916,7 +916,7 @@ for keyim in image_list.keys():
     for i in range(numanot1+1)[1:]:
         anotacioni=(anot1==i)
         Janoti=[]
-        for j in range(np.unique(c).shape[0]):
+        for j in np.unique(c):
             segmentationi=(c==j)
             intersec=sum(sum(np.logical_and(anotacioni,segmentationi).astype(int)))
             union=sum(sum(np.logical_or(anotacioni,segmentationi).astype(int)))
@@ -926,10 +926,10 @@ for keyim in image_list.keys():
     jac1a=np.mean(np.sort(Jaccardsa)[-5:])
     #for segmentation "c", human2
     Jaccardsa=[]
-    for i in range(numanot1+1)[1:]:
-        anotacioni=(anot1==i)
+    for i in range(numanot2+1)[1:]:
+        anotacioni=(anot2==i)
         Janoti=[]
-        for j in range(np.unique(c).shape[0]):
+        for j in np.unique(c):
             segmentationi=(c==j)
             intersec=sum(sum(np.logical_and(anotacioni,segmentationi).astype(int)))
             union=sum(sum(np.logical_or(anotacioni,segmentationi).astype(int)))
@@ -940,9 +940,9 @@ for keyim in image_list.keys():
     #for segmentation "c", human3
     Jaccardsa=[]
     for i in range(numanot3+1)[1:]:
-        anotacioni=(anot1==i)
+        anotacioni=(anot3==i)
         Janoti=[]
-        for j in range(np.unique(c).shape[0]):
+        for j in np.unique(c):
             segmentationi=(c==j)
             intersec=sum(sum(np.logical_and(anotacioni,segmentationi).astype(int)))
             union=sum(sum(np.logical_or(anotacioni,segmentationi).astype(int)))
@@ -956,7 +956,7 @@ for keyim in image_list.keys():
     for i in range(numanot1+1)[1:]:
         anotacioni=(anot1==i)
         Janoti=[]
-        for j in range(np.unique(d).shape[0]):
+        for j in np.unique(d):
             segmentationi=(d==j)
             intersec=sum(sum(np.logical_and(anotacioni,segmentationi).astype(int)))
             union=sum(sum(np.logical_or(anotacioni,segmentationi).astype(int)))
@@ -966,10 +966,10 @@ for keyim in image_list.keys():
     jac1a=np.mean(np.sort(Jaccardsa)[-5:])
     #for segmentation "d", human2
     Jaccardsa=[]
-    for i in range(numanot1+1)[1:]:
-        anotacioni=(anot1==i)
+    for i in range(numanot2+1)[1:]:
+        anotacioni=(anot2==i)
         Janoti=[]
-        for j in range(np.unique(d).shape[0]):
+        for j in np.unique(d):
             segmentationi=(d==j)
             intersec=sum(sum(np.logical_and(anotacioni,segmentationi).astype(int)))
             union=sum(sum(np.logical_or(anotacioni,segmentationi).astype(int)))
@@ -980,9 +980,9 @@ for keyim in image_list.keys():
     #for segmentation "d", human3
     Jaccardsa=[]
     for i in range(numanot3+1)[1:]:
-        anotacioni=(anot1==i)
+        anotacioni=(anot3==i)
         Janoti=[]
-        for j in range(np.unique(d).shape[0]):
+        for j in np.unique(d):
             segmentationi=(d==j)
             intersec=sum(sum(np.logical_and(anotacioni,segmentationi).astype(int)))
             union=sum(sum(np.logical_or(anotacioni,segmentationi).astype(int)))
@@ -996,7 +996,7 @@ for keyim in image_list.keys():
     for i in range(numanot1+1)[1:]:
         anotacioni=(anot1==i)
         Janoti=[]
-        for j in range(np.unique(e).shape[0]):
+        for j in np.unique(e):
             segmentationi=(e==j)
             intersec=sum(sum(np.logical_and(anotacioni,segmentationi).astype(int)))
             union=sum(sum(np.logical_or(anotacioni,segmentationi).astype(int)))
@@ -1006,10 +1006,10 @@ for keyim in image_list.keys():
     jac1a=np.mean(np.sort(Jaccardsa)[-5:])
     #for segmentation "e", human2
     Jaccardsa=[]
-    for i in range(numanot1+1)[1:]:
-        anotacioni=(anot1==i)
+    for i in range(numanot2+1)[1:]:
+        anotacioni=(anot2==i)
         Janoti=[]
-        for j in range(np.unique(e).shape[0]):
+        for j in np.unique(e):
             segmentationi=(e==j)
             intersec=sum(sum(np.logical_and(anotacioni,segmentationi).astype(int)))
             union=sum(sum(np.logical_or(anotacioni,segmentationi).astype(int)))
@@ -1020,9 +1020,9 @@ for keyim in image_list.keys():
     #for segmentation "e", human3
     Jaccardsa=[]
     for i in range(numanot3+1)[1:]:
-        anotacioni=(anot1==i)
+        anotacioni=(anot3==i)
         Janoti=[]
-        for j in range(np.unique(e).shape[0]):
+        for j in np.unique(e):
             segmentationi=(e==j)
             intersec=sum(sum(np.logical_and(anotacioni,segmentationi).astype(int)))
             union=sum(sum(np.logical_or(anotacioni,segmentationi).astype(int)))
@@ -1036,7 +1036,7 @@ for keyim in image_list.keys():
     for i in range(numanot1+1)[1:]:
         anotacioni=(anot1==i)
         Janoti=[]
-        for j in range(np.unique(f).shape[0]):
+        for j in np.unique(f):
             segmentationi=(f==j)
             intersec=sum(sum(np.logical_and(anotacioni,segmentationi).astype(int)))
             union=sum(sum(np.logical_or(anotacioni,segmentationi).astype(int)))
@@ -1046,10 +1046,10 @@ for keyim in image_list.keys():
     jac1a=np.mean(np.sort(Jaccardsa)[-5:])
     #for segmentation "f", human2
     Jaccardsa=[]
-    for i in range(numanot1+1)[1:]:
-        anotacioni=(anot1==i)
+    for i in range(numanot2+1)[1:]:
+        anotacioni=(anot2==i)
         Janoti=[]
-        for j in range(np.unique(f).shape[0]):
+        for j in np.unique(f):
             segmentationi=(f==j)
             intersec=sum(sum(np.logical_and(anotacioni,segmentationi).astype(int)))
             union=sum(sum(np.logical_or(anotacioni,segmentationi).astype(int)))
@@ -1060,9 +1060,9 @@ for keyim in image_list.keys():
     #for segmentation "f", human3
     Jaccardsa=[]
     for i in range(numanot3+1)[1:]:
-        anotacioni=(anot1==i)
+        anotacioni=(anot3==i)
         Janoti=[]
-        for j in range(np.unique(f).shape[0]):
+        for j in np.unique(f):
             segmentationi=(f==j)
             intersec=sum(sum(np.logical_and(anotacioni,segmentationi).astype(int)))
             union=sum(sum(np.logical_or(anotacioni,segmentationi).astype(int)))
