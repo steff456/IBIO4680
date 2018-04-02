@@ -11,6 +11,7 @@ def segmentByClustering(rgbImage, featureSpace, clusteringMethod, numberOfCluste
     from sklearn.cluster import KMeans
     import scipy.io as sio
     from PIL import Image
+    import PIL
     from sklearn import mixture
     from sklearn import cluster
     import time
@@ -19,7 +20,7 @@ def segmentByClustering(rgbImage, featureSpace, clusteringMethod, numberOfCluste
     from skimage.feature import peak_local_max
     import glob
     import math
-    
+    import scipy
     #verify the image is in np array, if not, it is casted
     rgbImage=np.array(rgbImage)
     #color and space maximum normalization values. It will change the representativeness of each channel
@@ -87,13 +88,21 @@ def segmentByClustering(rgbImage, featureSpace, clusteringMethod, numberOfCluste
         seg=np.reshape(assig,(image.shape[0],image.shape[1]))
         return seg
     elif clusteringMethod=='hierarchical':
+        a=image.shape
+        image=cv2.resize(image,(100,100))
+        image=np.array(image)
         imager=np.reshape(image,(1,image.shape[0]*image.shape[1],image.shape[2]))[0]
         hierClus=cluster.AgglomerativeClustering(n_clusters=numberOfClusters,affinity='euclidean')
         assig=hierClus.fit_predict(imager)
-        seg=np.reshape(assig,(image.shape[0],image.shape[1]))
+        seg=np.reshape(assig,(100,100))
+        seg=scipy.misc.imresize(seg,(a[0],a[1]),interp='nearest')
         return seg
     elif clusteringMethod=='watershed':
-        image=np.mean(image,axis=2)
+        if featureSpace=='rgb+xy' or featureSpace=='rgb':
+            image=image[:,:,0:3]
+            image=np.mean(image,axis=2)
+        else:
+            image=image[:,:,0]
         local_max = peak_local_max(-1*image, indices=False,num_peaks=numberOfClusters,num_peaks_per_label=1)
         markers=ndi.label(local_max)[0]
         seg=watershed(image,markers)
