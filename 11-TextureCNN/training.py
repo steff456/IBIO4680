@@ -105,14 +105,14 @@ if args.cuda:
 
 transform = transforms.Compose([
     transforms.ColorJitter(), transforms.RandomHorizontalFlip(),
-    transforms.RandomCrop((128 , 128)), transforms.ToTensor()
+    transforms.RandomCrop((128, 128)), transforms.ToTensor()
     ])
 
 trainset = torchvision.datasets.ImageFolder(
     root=osp.join(args.data, args.split) + "_128", transform=transform)
 
 train_loader = torch.utils.data.DataLoader(
-    trainset, batch_size=args.batch_size, shuffle=True, pin_memory=True,
+    trainset, batch_size=args.batch_size, shuffle=True, pin_memory=False,
     num_workers=args.workers)
 
 start_epoch = args.start_epoch
@@ -122,7 +122,7 @@ if args.val:
         root=osp.join(args.data, args.val) + "_128", transform=transform)
 
     val_loader = torch.utils.data.DataLoader(
-        valset, batch_size=args.batch_size, pin_memory=True,
+        valset, batch_size=args.batch_size, pin_memory=False,
         num_workers=args.workers)
 
 if not osp.exists(args.save_folder):
@@ -143,20 +143,41 @@ class Net(nn.Module):
         self.conv2 = nn.Conv2d(64, 64, 3)
         self.conv3 = nn.Conv2d(64, 128, 3)
         self.conv4 = nn.Conv2d(128, 128, 3)
-        self.fc1 = nn.Linear(128 * 29 * 29, 25)
+        self.conv5 = nn.Conv2d(128, 256, 3)
+        self.conv6 = nn.Conv2d(256, 256, 3)
+        self.conv7 = nn.Conv2d(256, 256, 3)
+        self.conv8 = nn.Conv2d(256, 512, 3)
+        self.conv9 = nn.Conv2d(512, 512, 3)
+        self.conv10 = nn.Conv2d(512, 512, 3)
+        self.fc1 = nn.Linear(512*5*5, 25)
 
     def forward(self, x):
         x = F.selu(self.conv1(x))
         x = F.selu(self.conv2(x))
-        x = F.max_pool2d(x, 2)
-        x = F.dropout(F.selu(self.conv3(x)), 0.25)
-        x = F.dropout(F.selu(self.conv4(x)), 0.25)
-        x = F.max_pool2d(x, 2)
-        x = x.view(-1, 128 * 29 * 29)
+        y = x
+        x = F.max_pool2d(x,2)
+        x = F.selu(self.conv3(x))
+        x = F.selu(self.conv4(x))
+        z = x
+        x = F.max_pool2d(x,2)
+        x = F.selu(self.conv5(x))
+        x = F.selu(self.conv6(x))
+        x = F.selu(self.conv7(x))
+        w = x
+        x = F.max_pool2d(x,2)
+        x = F.selu(self.conv8(x))
+        x = F.selu(self.conv9(x))
+        x = F.selu(self.conv10(x))
+        x = F.upsample(x, size=(y.size(-2), y.size(-1)), mode='bilinear')
+        z = F.upsample(z, size=(y.size(-2), y.size(-1)), mode='bilinear')
+        w = F.upsample(w, size=(y.size(-2), y.size(-1)), mode='bilinear')
+        x = torch.cat([x,y,z,w], dim=1)
+        x = F.selu(self.convL(x))
+        x = x.view(-1, 512*5*5)
         x = self.fc1(x)
         return F.log_softmax(x, dim=1)
 
-    def load_state_dict(self, state):
+    def load_state_dict(self, new_state):
         state = self.state_dict()
         for layer in state:
             if layer in new_state:
@@ -204,11 +225,6 @@ optimizer = optim.SGD(net.parameters(), lr=args.lr, momentum=0.9)
 
 scheduler = ReduceLROnPlateau(
     optimizer, patience=args.patience)
-
-if osp.exists(args.optim_snapshot):
-    optimizer.load_state_dict(torch.load(args.optim_snapshot))
-
-scheduler.step(args.start_epoch)
 
 
 def train(epoch):
@@ -300,10 +316,11 @@ def test():
     print("Writing predictions")
     net.eval()
     labels = {}
-    files = glob.glob(osp.join(args.data, "{0}_128/label_0/*.jpg"))
+    files = glob.glob(osp.join(args.data, "{0}_128/label_00/*.jpg".format(args.eval)))
     for file in tqdm(files):
         _id, _ = osp.splitext(osp.basename(file))
         img = Image.open(file)
+        #img = transforms.ToTensor()(img)
         img = transform(img)
         if img.size(0) == 1:
             img = torch.stack([img] * 3, dim=1).squeeze()
@@ -314,7 +331,7 @@ def test():
         labels[_id] = predicted[0]
 
     with open(args.predictions, 'w') as f:
-        f.write('\n'.join(['{0},{1}'.format(k, labels[k]) for k in labels]))
+        f.write('\n'.join(['{0},{1}'.format(k, labels[k].data[0]) for k in labels]))
 
 
 if __name__ == '__main__':
@@ -366,3 +383,4 @@ if __name__ == '__main__':
         if osp.exists(filename):
             net.load_state_dict(torch.load(filename))
         test()
+
