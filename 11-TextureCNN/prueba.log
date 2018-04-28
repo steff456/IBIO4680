@@ -1,0 +1,46 @@
+Argument list to program
+--optim_snapshot weights/texture_optim.pth
+--env kennyholiwis
+--eval_first False
+--data /home/galindojimenez
+--num_workers 4
+--workers 4
+--snapshot weights/texture_weights.pth
+--epochs 20
+--start_epoch 1
+--visdom http://visdom.margffoy-tuay.com
+--batch_size 50
+--save_folder weights/
+--no_cuda False
+--patience 2
+--seed 1111
+--eval test
+--log_interval 10
+--split train
+--momentum 0.9
+--val val
+--predictions predictions.txt
+--backup_iters 1000
+--lr 0.001
+
+
+Initializing Visdom frontend at: http://visdom.margffoy-tuay.com:80
+Train begins...
+0it [00:00, ?it/s]THCudaCheck FAIL file=/pytorch/torch/lib/THC/generic/THCStorage.cu line=58 error=2 : out of memory
+Writing predictions
+
+0it [00:00, ?it/s][A
+[ATraceback (most recent call last):
+  File "training.py", line 329, in <module>
+    train_loss = train(epoch)
+  File "training.py", line 228, in train
+    outputs = net(inputs)
+  File "/usr/local/lib/python3.5/dist-packages/torch/nn/modules/module.py", line 357, in __call__
+    result = self.forward(*input, **kwargs)
+  File "training.py", line 149, in forward
+    x = F.selu(self.conv1(x))
+  File "/usr/local/lib/python3.5/dist-packages/torch/nn/functional.py", line 642, in selu
+    return _functions.thnn.SELU.apply(input, inplace)
+  File "/usr/local/lib/python3.5/dist-packages/torch/nn/_functions/thnn/activation.py", line 198, in forward
+    output = input.new(input.size())
+RuntimeError: cuda runtime error (2) : out of memory at /pytorch/torch/lib/THC/generic/THCStorage.cu:58
